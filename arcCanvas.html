@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        body{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<canvas id="vas" width="400" height="400" style="border: 1px solid deeppink"></canvas>
+<script>
+    var vas = document.getElementById("vas");
+    var ctx = vas.getContext("2d");
+    /*
+    * 渐变，createLinearGradient(x1, y1, x2, y2)
+    * 在canvas中渐变这一节如果没有详细的教程指导，单靠自己实践
+    * 是需要花费一些时间和过程才能够理解的，因为在渐变中有四个参数：x1 y1 x2 y2;
+    * 这四个参数不仅代表着两个坐标点，也控制着渐变的方向；
+    * {x1, y1}, {x2, y2}这四个参数中有一个参数的值发生变化，也就意味着
+    * 发生变化的参数所在的坐标就会发生变化，此时渐变的方向也会发生变化；
+    * */
+    ctx.beginPath();
+    /*
+    * 1、当参数为createLinearGradient(10, 10, 100, 100)时，
+    * 渐变方向为左上角开始 右下角结束
+    * */
+    //var pack = ctx.createLinearGradient(10, 10, 100, 100);
+
+    /*
+    * 2、当参数为createLinearGradient(10, 10, 100, 10)时，
+    * 渐变方向从左到右
+    * */
+    //var pack = ctx.createLinearGradient(10, 10, 100, 10);
+
+    /*
+    * 3、当参数为createLinearGradient(10, 10, 10, 100)时；
+    * 渐变方向从上到下
+    * */
+    //var pack = ctx.createLinearGradient(10, 10, 10, 100);
+
+    /*
+    * 4、当参数为createLinearGradient(100, 10, 10, 10)时；
+    * 渐变方向从右到左
+    * */
+    var pack = ctx.createLinearGradient(100, 10, 10, 10);
+    pack.addColorStop(0, "red");
+    pack.addColorStop(0.5, "yellow");
+    pack.addColorStop(1, "blue");
+    ctx.fillStyle = pack;
+    ctx.rect(0, 0, 200, 200);
+    ctx.fill();
+</script>
+</body>
+</html>
